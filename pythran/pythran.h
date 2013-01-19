@@ -425,10 +425,7 @@ template <class T, unsigned long N>
     {
         typename attribute_element<3,pythonic::core::ndarray<T,N>>::type const operator()(core::ndarray<T,N> const& a)
         {
-            int size = 1;
-            for(auto s: (*a.shape))
-                size*=s;
-            return size;
+            return std::accumulate(a.shape->begin(), a.shape->end(), 1, std::multiplies<int>());
         }
     };
 
@@ -446,10 +443,7 @@ template <class T, unsigned long N>
     {
         typename attribute_element<5,pythonic::core::ndarray<T,N>>::type const operator()(core::ndarray<T,N> const& a)
         {
-            int size = 1;
-            for(auto s: (*a.shape))
-                size*=s;
-            return size*sizeof(T);
+            return std::accumulate(a.shape->begin(), a.shape->end(), sizeof(T), std::multiplies<int>());
         }
     };
 
