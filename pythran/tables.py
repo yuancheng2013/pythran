@@ -198,6 +198,8 @@ modules = {
             "empty": ConstFunctionIntr(),
             "arange": ConstFunctionIntr(),
             "linspace": ConstFunctionIntr(),
+            "pi": ScalarIntr(),
+            "e": ScalarIntr(),
             },
         "time": {
                 "sleep": ConstFunctionIntr(),
