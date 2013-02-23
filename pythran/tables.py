@@ -203,6 +203,7 @@ modules = {
             "empty_like": ConstFunctionIntr(),
             "arange": ConstFunctionIntr(),
             "linspace": ConstFunctionIntr(),
+            "reshape": ConstMethodIntr(),
             "pi": ScalarIntr(),
             "e": ScalarIntr(),
             },
