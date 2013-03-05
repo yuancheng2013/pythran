@@ -195,6 +195,7 @@ modules = {
             "pmap": ConstFunctionIntr(),
             },
         "numpy": {
+            "all": ConstMethodIntr(),
             "array": ConstFunctionIntr(),
             "sin": ConstFunctionIntr(),
             "zeros": ConstFunctionIntr(),
