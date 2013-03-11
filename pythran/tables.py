@@ -207,6 +207,7 @@ modules = {
             "reshape": ConstMethodIntr(),
             "cumsum": ConstMethodIntr(),
             "sum": ConstMethodIntr(),
+            "transpose": ConstMethodIntr(),
             "max": ConstMethodIntr(),
             "min": ConstMethodIntr(),
             "pi": ScalarIntr(),
