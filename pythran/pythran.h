@@ -1056,7 +1056,7 @@ struct pythran_to_python< core::empty_set > {
 template <typename T>
 struct custom_boost_simd_logical {
     static PyObject* convert( boost::simd::logical<T> const& n) {
-        return boost::python::incref(boost::python::object(n).ptr());
+        return boost::python::incref(boost::python::object((T)n).ptr());
     }
 };
 template<typename T>
