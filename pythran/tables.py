@@ -197,6 +197,7 @@ modules = {
             },
         "numpy": {
             "absolute": ConstFunctionIntr(),
+            "add": ConstFunctionIntr(),
             "arccos": ConstFunctionIntr(),
             "arccosh": ConstFunctionIntr(),
             "arcsin": ConstFunctionIntr(),
@@ -211,6 +212,10 @@ modules = {
             "arctan": ConstFunctionIntr(),
             "arctan2": ConstFunctionIntr(),
             "array": ConstFunctionIntr(),
+            "bitwise_and": ConstFunctionIntr(),
+            "bitwise_not": ConstFunctionIntr(),
+            "bitwise_or": ConstFunctionIntr(),
+            "bitwise_xor": ConstFunctionIntr(),
             "ceil": ConstFunctionIntr(),
             "complex" : ConstFunctionIntr(),
             "complex32" : ConstFunctionIntr(),
