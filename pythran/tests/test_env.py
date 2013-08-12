@@ -103,14 +103,15 @@ class TestEnv(unittest.TestCase):
             # Produce the reference, python-way, run in an separated 'env'
             env = {'__builtin__': __import__('__builtin__')}
             refcode = code+"\n"+runas
+
+            python_exception_type = None
+            pythran_exception_type = None
             try:
                 if check_output:
                     exec refcode in env
                     python_ref = env[self.TEST_RETURNVAL]
-            except Exception as e:
-                # useful for debug
-                print refcode
-                raise
+            except BaseException as e:
+                python_exception_type = type(e)
 
             # If no module name was provided, create one
             modname = module_name or ("test_" + name)
@@ -133,9 +134,16 @@ class TestEnv(unittest.TestCase):
 
                 # Test Results, assert if mismatch
                 self.compare_pythonpythran_results(python_ref, pythran_res)
+            except BaseException as e:
+                pythran_exception_type = type(e)
             finally:
                 # Clean temporary DLL
                 os.remove(cxx_compiled)
+
+            if pythran_exception_type != python_exception_type:
+                return AssertionError(
+                    "expected exception was %s, but received %s" %
+                    (python_exception_type, pythran_exception_type))
 
 
 class TestFromDir(TestEnv):

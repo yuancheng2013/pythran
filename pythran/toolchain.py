@@ -20,7 +20,8 @@ from config import cfg
 from passmanager import PassManager
 from numpy import get_include
 from typing import extract_constructed_types, pytype_to_ctype
-from tables import pythran_ward
+from tables import pythran_ward, functions
+from intrinsic import ConstExceptionIntr
 
 from subprocess import check_output, STDOUT, CalledProcessError
 from tempfile import mkstemp, NamedTemporaryFile
@@ -178,6 +179,15 @@ def generate_cxx(module_name, code, specs=None, optimizations=None):
             Statement('boost::python::implicitly_convertible<std::string,'
                       + 'pythonic::core::string>()')]
         )
+
+        for function_name, v in functions.iteritems():
+            for mname, symbol in v:
+                if isinstance(symbol, ConstExceptionIntr):
+                    mod.add_to_init([
+                        Statement(
+                            'boost::python::register_exception_translator<' +
+                            'pythonic::core::%s>(&translate_%s)' %
+                            (function_name, function_name))])
 
         for function_name, signatures in specs.iteritems():
             internal_func_name = renamings.get(function_name,
