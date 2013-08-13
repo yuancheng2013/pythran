@@ -1,0 +1,136 @@
+\documentclass[a4paper, 11pt]{article}
+
+% French encoding
+\usepackage[utf8]{inputenc}
+\usepackage[frenchb]{babel}
+\usepackage[autolanguage]{numprint}
+\usepackage[T1]{fontenc}
+
+% basic pkgs
+\usepackage{latexsym, amsmath, amssymb}
+%\usepackage{indentfirst}
+
+% settings
+%\setlength{\parskip}{1em}
+%\setlength{\parindent}{0pt}
+
+\newcommand\Pythran{\textsc{Pythran}}
+\newcommand\Python{\textsc{Python}}
+\newcommand\Pypy{\textsc{Pypy}}
+\newcommand\Github{\textsc{Github}}
+
+\begin{document}
+
+% Cover
+\title{Rapport d'étonnement}
+\author{PENG Yuancheng}
+\maketitle
+
+% Contents
+\tableofcontents
+\setcounter{tocdepth}{3}
+\pagebreak
+
+\section{Déroulement du stage}
+\label{sec:deroulement-stage}
+
+Le stage a commencé depuis le 1 juillet et a duré pendant deux mois.
+Comme mon tuteur monsieur Serge Guelton est un chercheur associé qui ne travaille
+pas tous le temps dans l'école, on a passé plus qu'un moitié de temps à
+télétravail. Le reste de temps le lieu de travail n'était pas fixe non plus:
+je travaillais soit dans le bureau soit dans sa maison.
+
+\subsection*{Sujet et objectifs du stage}
+
+Pour bien connaitre mon sujet du stage, il faut tout d'abord savoir qu'est-ce
+que \Pythran{}. \Pythran{} est un compilateur qui traduit un sous-ensemble du
+langage \Python{} en \emph{C++} pour le but que les code \Python{} exécutent plus
+efficacement.
+
+Mon sujet du stage est l'expérimentation et la validation de performances
+autour du compilateur \Pythran{}, où les objectifs sont:
+
+  \begin{itemize}
+    \item Constituer une base de benchmarks adaptée
+    \item Évaluer le logiciel \Pythran{} sur ces benchmarks dans le temps
+    \item Comparer les performances de \Pythran{} à d'autres outils similaires
+  \end{itemize}
+
+\section{Développement \emph{Open Source}}
+\label{sec:developpement-open-source}
+
+\subsection*{Développement distribué}
+
+Comme \Pythran{} est un logiciel \emph{Open Source}, pour que tous le monde puisse
+avoir l'opportunité à participer le développement ou à savoir les techniques
+qu'il a appliqué, la source est déposé sur \Github{} où tout le monde peut
+y accéder et voir son développement.
+
+La source du projet est contrôlée par Git, un outil de gestion de version
+décentralisé qui nous permet de travailler de manière distribué.
+
+\subsection*{Communication entre développeurs}
+
+Le compilateur \Pythran{} est développé tous en Anglais, incluant son code,
+commentaires, et les discutions sur \Github{}.
+Les développeurs discutent quotidiennement sur IRC et plusieurs mailing liste.
+%TODO référence, bibliothèques
+
+\section{Résultats}
+\label{sec:resultats}
+
+Pour évaluer et améliorer la performance de \Pythran{}, on a développé
+divers outils et en a évalué aux différents aspects.
+
+\subsection*{Pythran-replay}
+
+Pythran-replay un des principaux travails pendant mon stage. Il est un script
+\Python{} qui évalue les performances des commits historiques du \Pythran{}.
+Il nous aide à trouver à quels commits qu'on a amélioré la
+performance du logiciel et les commits où on en a perdu.
+
+En développant ce script intéressant, j'ai bien découvert l'utilisation de
+\Github{} et le principe du développement d'un projet en contrôlant ses versions.
+
+\subsection*{Pythran-benchmarks}
+
+Pythran-benchmarks est aussi un script, mais il évalue \Pythran{} d'un autre
+façon: il compare le temps d'exécution entre \Pythran{} \Python{} et \Pypy{},
+un des concurrents de \Pythran{}. Ce script a appuye sur le benchmarck
+\emph{euler} qui existe deja dans le projet \Pythran{}. Il a trouve plusieurs
+test cases où \Pythran{} n'a pas bien fonctionné.
+
+\subsection*{Contribution à \emph{Open Source}}
+%TODO
+
+
+\subsection*{Compétences acquises}
+Je suis grandement bénéficié de ce stage. Il non seulement m'a fait
+apprendre beaucoup de connaissance de programmation, mais aussi m'a ouvert la
+porte open source.
+
+Voici des outils j'apprécie le plus pendant ce stage:
+
+\begin{description}
+  \item[Linux] \hfill
+    Un système d'exploitation excellent.
+  \item[Vim] \hfill
+    Un vrai éditeur pour programmeurs.
+  \item[Git] \hfill
+    Un outil qui nous aide à constituer grands projets.
+  \item[\Python{}] \hfill
+    Un des langage le plus efficace pour ingénieurs.
+  \item[\LaTeX] \hfill
+
+\end{description}
+
+% TODO Anglais et Français
+
+
+\newpage
+\section{Conclusion}
+\label{section4}
+% Connaissance théorique et Problèmes pratiques
+% Choix futurs
+
+\end{document}
