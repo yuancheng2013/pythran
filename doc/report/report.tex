@@ -8,11 +8,7 @@
 
 % basic pkgs
 \usepackage{latexsym, amsmath, amssymb}
-%\usepackage{indentfirst}
-
-% settings
-%\setlength{\parskip}{1em}
-%\setlength{\parindent}{0pt}
+\usepackage{url}
 
 \newcommand\Pythran{\textsc{Pythran}}
 \newcommand\Python{\textsc{Python}}
@@ -31,30 +27,49 @@
 \setcounter{tocdepth}{3}
 \pagebreak
 
+\section{Objectifs du stage}
+
+Ce de stage de formation a pour objet de permettre à l'étudiant de mettre en
+pratique les outils théoriques et méthodologiques acquis au cours de sa
+formation, d'identifier ses compétences et de conforter son objectif
+professionnel.
+
+Le stage a ainsi pour but de préparer l'étudiant à l'entrée dans la vie active
+par une meilleure connaissance de l'organisme d'accueil.
+
+Le stage s'inscrit dans le cadre de la formation et du projet personnel et
+professionnel de l'étudiant. Il entre dans son cursus pédagogique.
+
+Le programme du stage est établi par Télécom Bretagne en fonction du programme
+général de la formation dispensée. \footnote{Article 2 de la Convention de stage}
+
 \section{Déroulement du stage}
 \label{sec:deroulement-stage}
 
 Le stage a commencé depuis le 1 juillet et a duré pendant deux mois.
 Comme mon tuteur monsieur Serge Guelton est un chercheur associé qui ne travaille
 pas tous le temps dans l'école, on a passé plus qu'un moitié de temps à
-télétravail. Le reste de temps le lieu de travail n'était pas fixe non plus:
+télétravail. Le reste de temps les lieux de travail étaient aussi flexibles:
 je travaillais soit dans le bureau soit dans sa maison.
 
-\subsection*{Sujet et objectifs du stage}
+\subsection*{Sujet et missions du stage}
 
 Pour bien connaitre mon sujet du stage, il faut tout d'abord savoir qu'est-ce
-que \Pythran{}. \Pythran{} est un compilateur qui traduit un sous-ensemble du
-langage \Python{} en \emph{C++} pour le but que les code \Python{} exécutent plus
-efficacement.
+que \Pythran{} \footnote{La source de pythran se trouve sur
+https://github.com/serge-sans-paille/pythran}.
+\Pythran{} est un compilateur qui traduit un sous-ensemble du
+langage \Python{} en \emph{C++} pour le but que les code s'écrit en \Python{}
+exécutent plus efficacement.
 
 Mon sujet du stage est l'expérimentation et la validation de performances
-autour du compilateur \Pythran{}, où les objectifs sont:
+autour du compilateur \Pythran{}, où les missions sont:
 
   \begin{itemize}
     \item Constituer une base de benchmarks adaptée
     \item Évaluer le logiciel \Pythran{} sur ces benchmarks dans le temps
     \item Comparer les performances de \Pythran{} à d'autres outils similaires
   \end{itemize}
+
 
 \section{Développement \emph{Open Source}}
 \label{sec:developpement-open-source}
@@ -63,18 +78,36 @@ autour du compilateur \Pythran{}, où les objectifs sont:
 
 Comme \Pythran{} est un logiciel \emph{Open Source}, pour que tous le monde puisse
 avoir l'opportunité à participer le développement ou à savoir les techniques
-qu'il a appliqué, la source est déposé sur \Github{} où tout le monde peut
-y accéder et voir son développement.
+qu'il a appliqué, la source du projet est déposé sur \Github{} où tout le monde peut
+y accéder et voire observer son développement.
 
 La source du projet est contrôlée par Git, un outil de gestion de version
 décentralisé qui nous permet de travailler de manière distribué.
+
+Grâce à \Github{}, on peut chacun développer son partie de travail à part et à
+la fin mettre les différents parties tout ensemble s'ils sont acceptés par le
+projet. C'est pour cette raison que le lieux et le temps de travail ne sont plus
+importants.
+
+\subsubsection*{Validation de code}
+Dans un grand projet \emph{Open Source}, on ne peut pas s'assurer que les pull
+requests demandés par les contributeurs soient corrects tout le temps. Il nous
+faut donc un mécanisme dans le projet à garantir les changements du code sont
+valides.
+
+Dans le le projet \Pythran{}, chaque fois après avoir ajouté une nouvelle fonction ou
+une fixé une bug, il faudrait que ces changements passent la validation,
+c'est-à-dire tous les test cases qui existent déjà dans le projet.
+
 
 \subsection*{Communication entre développeurs}
 
 Le compilateur \Pythran{} est développé tous en Anglais, incluant son code,
 commentaires, et les discutions sur \Github{}.
-Les développeurs discutent quotidiennement sur IRC et plusieurs mailing liste.
-%TODO référence, bibliothèques
+Les développeurs discutent quotidiennement plusieurs mailing liste et aussi sur 
+\emph{IRC} \footnote{introduction d'IRC et de la liste Freenode sont disponible
+sur Wikipédia : http://en.wikipedia.org/wiki/Internet\_Relay\_Chat}, dont le 
+channel est le pythran de la liste \emph{Freenode}.
 
 \section{Résultats}
 \label{sec:resultats}
@@ -84,32 +117,46 @@ divers outils et en a évalué aux différents aspects.
 
 \subsection*{Pythran-replay}
 
-Pythran-replay un des principaux travails pendant mon stage. Il est un script
+Pythran-replay\footnote{https://github.com/yuancheng2013/pythran-replay}
+l'un des principaux travails pendant mon stage dont j'ai
+contribue presque un moitié de temps dessus. Il est un script
 \Python{} qui évalue les performances des commits historiques du \Pythran{}.
-Il nous aide à trouver à quels commits qu'on a amélioré la
+Il nous aide à trouver les commits qu'on a amélioré la
 performance du logiciel et les commits où on en a perdu.
 
 En développant ce script intéressant, j'ai bien découvert l'utilisation de
 \Github{} et le principe du développement d'un projet en contrôlant ses versions.
 
+Je remercie particulièrement Pierrick Brunet qui m'a donné énormément de
+commentaires sur \emph{Github} et m'a grandement aidé améliorer le code de Pythran-replay et
+trouver des bugs perturbants.
+
 \subsection*{Pythran-benchmarks}
 
 Pythran-benchmarks est aussi un script, mais il évalue \Pythran{} d'un autre
 façon: il compare le temps d'exécution entre \Pythran{} \Python{} et \Pypy{},
-un des concurrents de \Pythran{}. Ce script a appuye sur le benchmarck
-\emph{euler} qui existe deja dans le projet \Pythran{}. Il a trouve plusieurs
+un des concurrents de \Pythran{}. Ce script a appuyé sur le benchmark
+\emph{euler} qui existe déjà dans le projet \Pythran{}. Il a trouve plusieurs
 test cases où \Pythran{} n'a pas bien fonctionné.
 
 \subsection*{Contribution à \emph{Open Source}}
-%TODO
+Python-benchmarks \footnote{Pour plus d'information: https://github.com/numfocus/python-benchmarks}
+est un projet qui compare les performances sur une divers de
+benchmarks parmi les différents compilateur de python où son repo se trouve 
+sur \emph{Github}.
+
+Vue que l'évaluation de pythran ainsi que comparer avec des autres compilateurs
+de python est l'un des mes objectifs de stage. J'ai donc contribué des
+benchmarks à ce projet.
 
 
 \subsection*{Compétences acquises}
 Je suis grandement bénéficié de ce stage. Il non seulement m'a fait
 apprendre beaucoup de connaissance de programmation, mais aussi m'a ouvert la
-porte open source.
+porte open source. J'ai touché beaucoup d'outils très utiles sous Linux et de
+techniques avancés.
 
-Voici des outils j'apprécie le plus pendant ce stage:
+Voici des outils que j'apprécie le plus pendant ce stage:
 
 \begin{description}
   \item[Linux] \hfill
@@ -121,16 +168,25 @@ Voici des outils j'apprécie le plus pendant ce stage:
   \item[\Python{}] \hfill
     Un des langage le plus efficace pour ingénieurs.
   \item[\LaTeX] \hfill
-
+    Un outil qui produit des jolies documents en pdf.
 \end{description}
 
-% TODO Anglais et Français
 
+Hors cela, j'ai aussi progresse mon niveaux des langues. Mon anglais a bien
+progressé au niveaux d'écrire de la documentation techniques, et je peut parler
+un peu plus couramment le français sur des sujets informatiques.
 
-\newpage
 \section{Conclusion}
-\label{section4}
+\label{sec:conclusion}
 % Connaissance théorique et Problèmes pratiques
-% Choix futurs
+En développant des sources j'ai apprit comment coopérer avec des autres
+informaticiens dans un grand projet compliqué. J'ai aussi constaté qu'il 
+y a un grand écart entre les connaissances théoriques et les problèmes pratiques.
+
+Pour d'être un programmeurs excellent, il faut connaitre encore plus de
+connaissances sur une divers de domaines informatiques. Et ça nous demande de
+la compétence de pouvoir apprendre rapidement des nouvelles technologies.
 
 \end{document}
+
+
