@@ -10,6 +10,7 @@
 % basic pkgs
 \usepackage{latexsym, amsmath, amssymb}
 \usepackage{url}
+\usepackage[colorlinks]{hyperref}
 
 \newcommand\Pythran{\textsc{Pythran}}
 \newcommand\Python{\textsc{Python}}
@@ -24,8 +25,11 @@
 \maketitle
 
 % Contents
+\hypersetup{linkcolor=black}
 \tableofcontents
 \setcounter{tocdepth}{3}
+
+\bibliographystyle{plain} %Choose a bibliograhpic style
 
 \section{Objectifs du stage}
 
@@ -54,12 +58,9 @@ télétravail. Le reste du temps, j'ai travaillé dans son bureau ou à son domi
 \subsection*{Sujet et missions du stage}
 
 Pour bien connaitre mon sujet du stage, il faut tout d'abord savoir ce qu'est
-\Pythran{}. \Pythran{} est un compilateur qui traduit un sous-ensemble du
+\Pythran{} \cite{pythran}. \Pythran{} est un compilateur qui traduit un sous-ensemble du
 langage \Python{} en \emph{C++} avec pour objectif d'obtenir des codes qui
 s'exécutent plus rapidement.
-
-\footnote{La source de pythran se trouve sur
-https://github.com/serge-sans-paille/pythran}.
 
 Mon sujet du stage est l'expérimentation et la validation de performances
 autour du compilateur \Pythran{}. Les objectifs sont~:
@@ -70,19 +71,21 @@ autour du compilateur \Pythran{}. Les objectifs sont~:
     \item Comparer les performances de \Pythran{} à d'autres outils similaires.
   \end{itemize}
 
-  \todo[inline]{manque une annonce du plan ici}
+	Ce rapport va présenter une divers aspects du monde \emph{Open Source}
+	qui m'a renouvelé le point de vue de la vie active d'un ingénieur
+	informatique et va aussi présenter les résultats de mon stage.
 
 \section{Développement \emph{Open Source}}
 \label{sec:developpement-open-source}
 
 \subsection*{Développement distribué}
 
-Comme \Pythran{}\todo{référence bibliographique} est un logiciel \emph{Open Source}, pour que tous le monde
+Comme \Pythran{} est un logiciel \emph{Open Source}, pour que tous le monde
 puisse avoir l'opportunité de participer au développement ou de savoir les
 techniques qu'il a appliquées, les sources du projet sont déposées sur
 \Github{} auquel tout le monde peut accéder et partager les développements.
 
-La source du projet est contrôlée par Git\todo{référence bibliographique ici ?}, un outil de gestion de version
+La source du projet est contrôlée par Git \cite{git}, un outil de gestion de version
 décentralisé qui nous permet de travailler de manière distribué.
 
 
@@ -107,10 +110,8 @@ c'est-à-dire tous les cas tests qui existent déjà dans le projet restent vali
 
 Le compilateur \Pythran{} est développé en Anglais, ce qui inclut code,
 commentaires, et les discussions sur \Github{}.
-Les développeurs discutent quotidiennement sur IRC\todo{acronym ?}, et utilisent une liste de diffusion spécifique.
+Les développeurs discutent quotidiennement sur IRC (\emph{Internet Relay Chat}), et utilisent une liste de diffusion spécifique.
 
-\footnote{introduction d'IRC et de la liste Freenode sont disponible
-sur Wikipédia : http://en.wikipedia.org/wiki/Internet\_Relay\_Chat},
 \section{Résultats}
 \label{sec:resultats}
 
@@ -119,12 +120,12 @@ divers outils et en a évalué différents aspects.
 
 \subsection*{Pythran-replay}
 
-Pythran-replay est l'un des principaux résultats de mon stage~: j'y ai investit environ la moitié de mon temps. C'est un script
+Pythran-replay \cite{pythran-replay} est l'un des principaux résultats de mon stage~:
+j'y ai investit environ la moitié de mon temps. C'est un script
 \Python{} qui évalue les performances des \emph{commits} dans l'historique de \Pythran{}.
 Il nous aide à trouver les \emph{commits} qui ont améliorés les
 performances du logiciel et les \emph{commits} qui les ont dégradées.
 
-\footnote{https://github.com/yuancheng2013/pythran-replay}
 
 En développant ce script intéressant, j'ai pu découvrir l'utilisation de
 \Github{} et les principes du développement d'un projet en contrôlant ses versions.
@@ -136,14 +137,17 @@ trouver des \emph{bugs} perturbants.
 \subsection*{Pythran-benchmarks}
 
 Pythran-benchmarks est aussi un script, mais il évalue \Pythran{} d'une autre
-façon~: il compare le temps d'exécution entre \Pythran{}, \Python{} et \Pypy{},
+façon~:
+il compare le temps d'exécution entre \Pythran{}, \Python{} et \Pypy{},
 un des concurrents de \Pythran{}. Ce script s'appuie sur le \emph{benchmark}
-\emph{euler}\todo{expliquer un peu ce qu'est le projet euler} qui existe déjà dans le projet \Pythran{}. Il a permis de trouver plusieurs
-cas tests où \Pythran{} ne fonctionne pas bien. Ces \emph{bugs} ont tous été corrigés par la communauté depuis.
+\emph{euler} qui existe déjà dans le projet \Pythran{}.
+Le benchmark s'agit d'un ensemble de problème de calculs informatique et mathématique
+qui demande plus que méthode mathématique à résoudre.  Il a permis de trouver plusieurs
+cas tests où \Pythran{} ne fonctionne pas bien.
+Ces \emph{bugs} ont tous été corrigés par la communauté depuis.
 
 \subsection*{Contribution au monde \emph{Open Source}}
-Python-benchmarks \footnote{Pour plus d'information: https://github.com/numfocus/python-benchmarks}
-est un projet qui compare les performances sur une divers de
+Python-benchmarks \cite{python-benchmarks} est un projet qui compare les performances sur une divers de
 benchmarks parmi les différents compilateur de python où son repo se trouve 
 sur \emph{Github}.
 
@@ -161,8 +165,6 @@ techniques avancés.
 
 Voici les outils que j'ai le plus apprécié pendant ce stage~:
 
-\todo[inline]{ça c'est le Bilan OUTIL}
-
 \begin{description}
   \item[Linux] \hfill
     Un système d'exploitation excellent.
@@ -176,12 +178,18 @@ Voici les outils que j'ai le plus apprécié pendant ce stage~:
     Un outil qui produit des jolies documents en pdf.
 \end{description}
 
-\todo[inline]{et le Bilan Ingénieur}
+En faisant ce stage, j'ai compris que la capacité de collaboration 
+est aussi importante que les compétences techniques. En plus,pour que les
+ingénieurs puissent communiquer entre eux sans difficulté, il est essentiel pour
+nous de respecter les règles de programmation.
 
-\todo[inline]{manque le Bilan Humain}
+En plus, je remercie monsieur Thierry Chonavel qui m'a financé et a assisté ma
+présentation de fin du stage, ainsi que mon tuteur Serge Guelton qui m'a orienté
+pendant plus que 2 mois et m'a donne de formation pédagogique, puis tous les
+gens sur le \emph{channel} pythran de la liste Freenode qui m'a aidé régler les
+problèmes confondants.
 
-
-Hors cela, j'ai aussi progresse mon niveaux des langues. Mon anglais a bien
+Hors cela, j'ai aussi progressé mes niveaux des langues. Mon anglais a bien
 progressé au niveaux d'écrire de la documentation techniques, et je peut parler
 un peu plus couramment le français sur des sujets informatiques.
 
@@ -196,8 +204,9 @@ Pour d'être un programmeurs excellent, il faut connaitre encore plus de
 connaissances sur une divers de domaines informatiques. Et ça nous demande de
 la compétence de pouvoir apprendre rapidement des nouvelles technologies.
 
-\todo[inline]{Mon encadrant est vraiment très gentil, il a relu avec étonnement mon rapport d'étonnement}
+Mon encadrant est vraiment très gentil, il a relu avec étonnement mon rapport d'étonnement
 
+\bibliography{Master}
 \end{document}
 
 
