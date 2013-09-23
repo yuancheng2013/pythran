@@ -5,6 +5,7 @@
 \usepackage[frenchb]{babel}
 \usepackage[autolanguage]{numprint}
 \usepackage[T1]{fontenc}
+\usepackage{todonotes}
 
 % basic pkgs
 \usepackage{latexsym, amsmath, amssymb}
@@ -25,7 +26,6 @@
 % Contents
 \tableofcontents
 \setcounter{tocdepth}{3}
-\pagebreak
 
 \section{Objectifs du stage}
 
@@ -47,99 +47,101 @@ général de la formation dispensée. \footnote{Article 2 de la Convention de st
 \label{sec:deroulement-stage}
 
 Le stage a commencé depuis le 1 juillet et a duré pendant deux mois.
-Comme mon tuteur monsieur Serge Guelton est un chercheur associé qui ne travaille
-pas tous le temps dans l'école, on a passé plus qu'un moitié de temps à
-télétravail. Le reste de temps les lieux de travail étaient aussi flexibles:
-je travaillais soit dans le bureau soit dans sa maison.
+Comme mon tuteur Serge Guelton est un chercheur associé qui ne travaille
+pas tous le temps dans l'école, j'ai passé plus de la moitié de temps en
+télétravail. Le reste du temps, j'ai travaillé dans son bureau ou à son domicile.
 
 \subsection*{Sujet et missions du stage}
 
-Pour bien connaitre mon sujet du stage, il faut tout d'abord savoir qu'est-ce
-que \Pythran{} \footnote{La source de pythran se trouve sur
+Pour bien connaitre mon sujet du stage, il faut tout d'abord savoir ce qu'est
+\Pythran{}. \Pythran{} est un compilateur qui traduit un sous-ensemble du
+langage \Python{} en \emph{C++} avec pour objectif d'obtenir des codes qui
+s'exécutent plus rapidement.
+
+\footnote{La source de pythran se trouve sur
 https://github.com/serge-sans-paille/pythran}.
-\Pythran{} est un compilateur qui traduit un sous-ensemble du
-langage \Python{} en \emph{C++} pour le but que les code s'écrit en \Python{}
-exécutent plus efficacement.
 
 Mon sujet du stage est l'expérimentation et la validation de performances
-autour du compilateur \Pythran{}, où les missions sont:
+autour du compilateur \Pythran{}. Les objectifs sont~:
 
   \begin{itemize}
-    \item Constituer une base de benchmarks adaptée
-    \item Évaluer le logiciel \Pythran{} sur ces benchmarks dans le temps
-    \item Comparer les performances de \Pythran{} à d'autres outils similaires
+    \item Constituer une base de \emph{benchmarks} adaptée.
+    \item Évaluer le logiciel \Pythran{} sur ces \emph{benchmarks} dans le temps.
+    \item Comparer les performances de \Pythran{} à d'autres outils similaires.
   \end{itemize}
 
+  \todo[inline]{manque une annonce du plan ici}
 
 \section{Développement \emph{Open Source}}
 \label{sec:developpement-open-source}
 
 \subsection*{Développement distribué}
 
-Comme \Pythran{} est un logiciel \emph{Open Source}, pour que tous le monde puisse
-avoir l'opportunité à participer le développement ou à savoir les techniques
-qu'il a appliqué, la source du projet est déposé sur \Github{} où tout le monde peut
-y accéder et voire observer son développement.
+Comme \Pythran{}\todo{référence bibliographique} est un logiciel \emph{Open Source}, pour que tous le monde
+puisse avoir l'opportunité de participer au développement ou de savoir les
+techniques qu'il a appliquées, les sources du projet sont déposées sur
+\Github{} auquel tout le monde peut accéder et partager les développements.
 
-La source du projet est contrôlée par Git, un outil de gestion de version
+La source du projet est contrôlée par Git\todo{référence bibliographique ici ?}, un outil de gestion de version
 décentralisé qui nous permet de travailler de manière distribué.
 
-Grâce à \Github{}, on peut chacun développer son partie de travail à part et à
-la fin mettre les différents parties tout ensemble s'ils sont acceptés par le
-projet. C'est pour cette raison que le lieux et le temps de travail ne sont plus
+
+Grâce à \Github{}, on peut chacun développer sa partie du travail à part et à
+la fin mettre les différents parties en commun s'ils sont acceptées par le
+projet, c'est à dire après revue de code. C'est pour cette raison que le lieux et le temps de travail ne sont plus aussi
 importants.
 
-\subsubsection*{Validation de code}
-Dans un grand projet \emph{Open Source}, on ne peut pas s'assurer que les pull
-requests demandés par les contributeurs soient corrects tout le temps. Il nous
-faut donc un mécanisme dans le projet à garantir les changements du code sont
+\subsubsection*{Validation du code}
+
+Dans un grand projet \emph{Open Source}, on ne peut pas s'assurer que les \emph{pull
+requests} demandés par les contributeurs soient corrects tout le temps. Il nous
+faut donc un mécanisme dans le projet pour garantir que les changements du code sont
 valides.
 
-Dans le le projet \Pythran{}, chaque fois après avoir ajouté une nouvelle fonction ou
-une fixé une bug, il faudrait que ces changements passent la validation,
-c'est-à-dire tous les test cases qui existent déjà dans le projet.
+Dans le le projet \Pythran{}, chaque fois  qu'une nouvelle fonctionnalité est ajoutée ou
+qu'un \emph{bug} est corrigé, il faut que ces changements passent la validation,
+c'est-à-dire tous les cas tests qui existent déjà dans le projet restent valides.
 
 
 \subsection*{Communication entre développeurs}
 
-Le compilateur \Pythran{} est développé tous en Anglais, incluant son code,
-commentaires, et les discutions sur \Github{}.
-Les développeurs discutent quotidiennement plusieurs mailing liste et aussi sur 
-\emph{IRC} \footnote{introduction d'IRC et de la liste Freenode sont disponible
-sur Wikipédia : http://en.wikipedia.org/wiki/Internet\_Relay\_Chat}, dont le 
-channel est le pythran de la liste \emph{Freenode}.
+Le compilateur \Pythran{} est développé en Anglais, ce qui inclut code,
+commentaires, et les discussions sur \Github{}.
+Les développeurs discutent quotidiennement sur IRC\todo{acronym ?}, et utilisent une liste de diffusion spécifique.
 
+\footnote{introduction d'IRC et de la liste Freenode sont disponible
+sur Wikipédia : http://en.wikipedia.org/wiki/Internet\_Relay\_Chat},
 \section{Résultats}
 \label{sec:resultats}
 
 Pour évaluer et améliorer la performance de \Pythran{}, on a développé
-divers outils et en a évalué aux différents aspects.
+divers outils et en a évalué différents aspects.
 
 \subsection*{Pythran-replay}
 
-Pythran-replay\footnote{https://github.com/yuancheng2013/pythran-replay}
-l'un des principaux travails pendant mon stage dont j'ai
-contribue presque un moitié de temps dessus. Il est un script
-\Python{} qui évalue les performances des commits historiques du \Pythran{}.
-Il nous aide à trouver les commits qu'on a amélioré la
-performance du logiciel et les commits où on en a perdu.
+Pythran-replay est l'un des principaux résultats de mon stage~: j'y ai investit environ la moitié de mon temps. C'est un script
+\Python{} qui évalue les performances des \emph{commits} dans l'historique de \Pythran{}.
+Il nous aide à trouver les \emph{commits} qui ont améliorés les
+performances du logiciel et les \emph{commits} qui les ont dégradées.
 
-En développant ce script intéressant, j'ai bien découvert l'utilisation de
-\Github{} et le principe du développement d'un projet en contrôlant ses versions.
+\footnote{https://github.com/yuancheng2013/pythran-replay}
+
+En développant ce script intéressant, j'ai pu découvrir l'utilisation de
+\Github{} et les principes du développement d'un projet en contrôlant ses versions.
 
 Je remercie particulièrement Pierrick Brunet qui m'a donné énormément de
-commentaires sur \emph{Github} et m'a grandement aidé améliorer le code de Pythran-replay et
-trouver des bugs perturbants.
+commentaires sur \emph{Github} et m'a grandement aidé à améliorer le code de Pythran-replay et
+trouver des \emph{bugs} perturbants.
 
 \subsection*{Pythran-benchmarks}
 
-Pythran-benchmarks est aussi un script, mais il évalue \Pythran{} d'un autre
-façon: il compare le temps d'exécution entre \Pythran{} \Python{} et \Pypy{},
-un des concurrents de \Pythran{}. Ce script a appuyé sur le benchmark
-\emph{euler} qui existe déjà dans le projet \Pythran{}. Il a trouve plusieurs
-test cases où \Pythran{} n'a pas bien fonctionné.
+Pythran-benchmarks est aussi un script, mais il évalue \Pythran{} d'une autre
+façon~: il compare le temps d'exécution entre \Pythran{}, \Python{} et \Pypy{},
+un des concurrents de \Pythran{}. Ce script s'appuie sur le \emph{benchmark}
+\emph{euler}\todo{expliquer un peu ce qu'est le projet euler} qui existe déjà dans le projet \Pythran{}. Il a permis de trouver plusieurs
+cas tests où \Pythran{} ne fonctionne pas bien. Ces \emph{bugs} ont tous été corrigés par la communauté depuis.
 
-\subsection*{Contribution à \emph{Open Source}}
+\subsection*{Contribution au monde \emph{Open Source}}
 Python-benchmarks \footnote{Pour plus d'information: https://github.com/numfocus/python-benchmarks}
 est un projet qui compare les performances sur une divers de
 benchmarks parmi les différents compilateur de python où son repo se trouve 
@@ -151,12 +153,15 @@ benchmarks à ce projet.
 
 
 \subsection*{Compétences acquises}
-Je suis grandement bénéficié de ce stage. Il non seulement m'a fait
-apprendre beaucoup de connaissance de programmation, mais aussi m'a ouvert la
-porte open source. J'ai touché beaucoup d'outils très utiles sous Linux et de
+
+J'ai grandement bénéficié de ce stage. Il m'a non seulement fait
+apprendre beaucoup de connaissance en programmation, mais m'a aussi ouvert la
+porte du monde de l'\emph{open source}. J'ai touché beaucoup d'outils très utiles sous Linux et de
 techniques avancés.
 
-Voici des outils que j'apprécie le plus pendant ce stage:
+Voici les outils que j'ai le plus apprécié pendant ce stage~:
+
+\todo[inline]{ça c'est le Bilan OUTIL}
 
 \begin{description}
   \item[Linux] \hfill
@@ -170,6 +175,10 @@ Voici des outils que j'apprécie le plus pendant ce stage:
   \item[\LaTeX] \hfill
     Un outil qui produit des jolies documents en pdf.
 \end{description}
+
+\todo[inline]{et le Bilan Ingénieur}
+
+\todo[inline]{manque le Bilan Humain}
 
 
 Hors cela, j'ai aussi progresse mon niveaux des langues. Mon anglais a bien
@@ -186,6 +195,8 @@ y a un grand écart entre les connaissances théoriques et les problèmes pratiq
 Pour d'être un programmeurs excellent, il faut connaitre encore plus de
 connaissances sur une divers de domaines informatiques. Et ça nous demande de
 la compétence de pouvoir apprendre rapidement des nouvelles technologies.
+
+\todo[inline]{Mon encadrant est vraiment très gentil, il a relu avec étonnement mon rapport d'étonnement}
 
 \end{document}
 
